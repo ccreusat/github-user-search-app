@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+
+  <title>Frontend Mentor | GitHub user search app</title>
+</head>
+
+<body class="light">
+
+  <main class="app">
+    <header class="app__header">
+      <strong class="logo">devfinder</strong>
+      <span class="theme" cursor>Dark <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M19.513 11.397a.701.701 0 00-.588.128 7.496 7.496 0 01-2.276 1.336 7.101 7.101 0 01-2.583.462 7.505 7.505 0 01-5.32-2.209 7.568 7.568 0 01-2.199-5.342c0-.873.154-1.72.41-2.49a6.904 6.904 0 011.227-2.21.657.657 0 00-.102-.924.701.701 0 00-.589-.128C5.32.61 3.427 1.92 2.072 3.666A10.158 10.158 0 000 9.83c0 2.8 1.125 5.342 2.967 7.19a10.025 10.025 0 007.16 2.98c2.353 0 4.527-.822 6.266-2.183a10.13 10.13 0 003.58-5.624.623.623 0 00-.46-.796z"
+            fill="#697C9A" fill-rule="nonzero" /></svg></span>
+    </header>
+
+    <div class="search bg">
+      <span id="error" class="error">No results</span>
+      <input type="text" name="search" id="search-input" placeholder="Search GitHub username...">
+      <button id="search-button" cursor>Search</button>
+    </div>
+
+    <div id="user" class="user bg"></div>
+  </main>
+
+  <script>
+    const ENDPOINT = "https://api.github.com/users";
+    const userContainer = document.getElementById("user");
+    const searchInput = document.getElementById("search-input");
+    const searchButton = document.getElementById("search-button");
+    const error = document.getElementById("error");
+    const user = {};
+    //const getColonTimeFromDate = date => date.toTimeString().slice(0, 8);
+
+    function renderTemplate(user) {
+      let date = new Date(user.created_at);
+      date = date.toDateString();
+      date = date.slice(3, 20);
+
+      return `
+        <div class="flex">
+          <figure class="user__avatar"><img src=${user.avatar_url} alt=${user.login}></figure>
+          <div class="user__content">
+            <div class="flex">
+              <strong class="user__name">${user.name ? user.name : user.login}</strong>
+              <p class="user__date">Joined ${date}</p>
+            </div>
+            <span class="user__login">@${user.login}</span>
+            <p class="user__text text">${user.bio ? user.bio : "This profile has no bio"}</p>
+            <div class="user__stats flex">
+              <div><span class="text">Repos</span> <strong>${user.public_repos}</strong></div>
+              <div><span class="text">Followers</span> <strong>${user.followers}</strong></div>
+              <div><span class="text">Following</span> <strong>${user.following}</strong></div>
+            </div>
+            <div class="user__info grid">
+              <p class="text"><img src="/assets/images/icon-location.svg" /> ${user.location ? user.location : "<span class='text-disabled'>Not Available</span>"}</p>
+              <p class="text"><img src="/assets/images/icon-twitter.svg" /> ${user.twitter_username ? user.twitter_username : "<span class='text-disabled'>Not Available</span>"}</p>
+              <p class="text"><img src="/assets/images/icon-website.svg" /> ${user.blog ? "<a target='_blank' href='"+user.blog+"'>Website link</a>" : "<span class='text-disabled'>Not Available</span>"}</p>
+              <p class="text"><img src="/assets/images/icon-company.svg" /> ${user.company ? user.company : "<span class='text-disabled'>Not Available</span>"}</p>
+            </div>
+          </div>
+        </div>`;
+    }
+
+    async function getGithubUser(username) {
+      let url = `${ENDPOINT}/${username}`;
+
+      error.style.display = "none";
+
+      try {
+        const response = await fetch(url);
+
+        if (response.ok !== false) {
+          let user = await response.json();
+          error.style.display = "none";
+          userContainer.innerHTML = renderTemplate(user);
+        } else {
+          error.style.display = "block";
+        }
+
+      } catch (error) {
+        console.log("error", error);
+      }
+    }
+
+    getGithubUser("octocat");
+
+    searchInput.addEventListener("change", () => {
+      if (searchInput.value !== "") {
+        searchButton.addEventListener("click", () => {
+          getGithubUser(searchInput.value);
+          searchInput.value = "";
+        });
+      }
+    });
+
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", event => {
+        if (event.matches) {
+          document.body.className = "dark";
+        } else {
+          document.body.className = "light";
+        }
+      });
+
+    const toggleTheme = document.querySelector(".theme");
+
+    toggleTheme.addEventListener("click", () => {
+      if (document.body.className === "light") {
+          document.body.className = "dark";
+        } else {
+          document.body.className = "light";
+        }
+
+    })
+  </script>
+
+</body>
+
+</html>
