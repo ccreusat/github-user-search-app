@@ -104,26 +104,27 @@
         });
       }
     });
+  </script>
+
+  <script>
+    const toggleButton = document.querySelector(".theme");
+
+    function toggleTheme(param) {
+      if (param) {
+        document.body.className = "dark";
+      } else {
+        document.body.className = "light";
+      }
+    }
 
     window
       .matchMedia("(prefers-color-scheme: dark)")
       .addEventListener("change", event => {
-        if (event.matches) {
-          document.body.className = "dark";
-        } else {
-          document.body.className = "light";
-        }
+        toggleTheme(event.matches);
       });
 
-    const toggleTheme = document.querySelector(".theme");
-
-    toggleTheme.addEventListener("click", () => {
-      if (document.body.className === "light") {
-          document.body.className = "dark";
-        } else {
-          document.body.className = "light";
-        }
-
+      toggleButton.addEventListener("click", () => {
+        toggleTheme(document.body.className === "light")
     })
   </script>
 
