@@ -92,7 +92,7 @@ async function getGithubUser(username) {
   searchInput.value = "";
 }
 
-getGithubUser("octocat");
+getGithubUser("ccreusat");
 
 searchForm.onsubmit = (event) => event.preventDefault();
 

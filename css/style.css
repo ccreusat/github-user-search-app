@@ -114,6 +114,12 @@ header {
   box-shadow: var(--box-shadow);
 }
 
+.button {
+  padding: 12px 24px;
+  color: white;
+  background-color: var(--blue);
+}
+
 [cursor] {
   cursor: pointer;
 }
@@ -160,9 +166,6 @@ header {
   position: absolute;
   top: 50%;
   right: 10px;
-  padding: 12px 24px;
-  color: white;
-  background-color: var(--blue);
   transform: translateY(-50%);
 }
 
@@ -198,6 +201,11 @@ header {
   display: block;
   color: var(--username);
   font-size: 16px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 60%;
+  overflow: hidden;
+  display: block;
 }
 
 .user__login {
