@@ -8,7 +8,7 @@
 
 :root {
   --box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.2);
-  --ff-family: 'Space Mono', monospace;
+  --ff-family: "Space Mono", monospace;
 }
 
 :root .light {
@@ -24,6 +24,8 @@
   --stats: hsl(227, 100%, 98%);
 
   --btn-hover: hsl(212, 100%, 69%);
+
+  --theme: url(../assets/images/icon-moon.svg) right center no-repeat;
 }
 
 :root .dark {
@@ -39,21 +41,23 @@
   --stats: hsl(220, 40%, 13%);
 
   --btn-hover: hsl(212, 100%, 69%);
-}
 
-html,
-body {
-  height: 100vh;
+  --theme: url(../assets/images/icon-sun.svg) right center no-repeat;
 }
 
 body {
   background-color: var(--body);
   font-family: var(--ff-family);
-  font-size: 15px;
+  font-size: 13px;
   line-height: 25px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-transition: background-color 1000ms linear;
+  -ms-transition: background-color 1000ms linear;
+  transition: background-color 300ms linear;
+}
+
+ul,
+li {
+  list-style: none;
 }
 
 input {
@@ -104,19 +108,6 @@ header {
   color: var(--text-disabled);
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  column-gap: 0;
-  row-gap: 20px;
-}
-
-.flex {
-  display: flex;
-  justify-content: space-between;
-}
-
 .bg {
   border-radius: 15px;
   background-color: var(--bg);
@@ -134,20 +125,17 @@ header {
 .theme {
   display: flex;
   justify-content: space-between;
+  padding-right: 2rem;
   align-items: center;
   text-transform: uppercase;
   font-size: 13px;
   font-weight: 700;
   color: var(--grey);
-}
-
-.theme svg {
-  margin-left: 1em;
+  background: var(--theme);
 }
 
 .app {
-  width: 730px;
-  margin: auto;
+  margin: 30px 24px;
 }
 
 .logo {
@@ -162,7 +150,8 @@ header {
 }
 
 .search input {
-  padding: 22px 10px 22px 22px;
+  padding: 20px;
+  letter-spacing: -0.04em;
   color: var(--username);
   background-color: var(--bg);
 }
@@ -182,12 +171,17 @@ header {
 }
 
 .user {
-  padding: 3.2em;
+  padding: 32px 24px;
+}
+
+.user__top {
+  display: flex;
 }
 
 .user__avatar {
-  width: 117px;
-  height: 117px;
+  margin-right: 20px;
+  width: 70px;
+  height: 70px;
 }
 
 .user__avatar img {
@@ -200,20 +194,15 @@ header {
   color: var(--grey);
 }
 
-.user__content {
-  flex: 1;
-  margin-left: 37px;
-}
-
 .user__name {
   display: block;
   color: var(--username);
-  font-size: 26px;
+  font-size: 16px;
 }
 
 .user__login {
   display: block;
-  margin-top: 12px;
+  /* margin-top: 12px; */
   color: var(--blue);
 }
 
@@ -223,35 +212,44 @@ header {
 }
 
 .user__stats {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin: 32px 0;
   padding: 17px 32px;
-  align-items: center;
   border-radius: 10px;
   background-color: var(--stats);
 }
 
 .user__stats span {
   display: block;
-  font-size: 13px;
+  font-size: 11px;
 }
 
 .user__stats strong {
   display: block;
+  text-align: center;
   color: var(--username);
-  font-size: 22px;
+  font-size: 16px;
 }
 
 .user__info {
   flex-wrap: wrap;
 }
 
-.user__info p {
+.user__item {
   display: flex;
   align-items: center;
 }
 
-.user__info img {
+.user__item:not(:first-child) {
+  margin-top: 16px;
+}
+
+.image-container {
   margin-right: 1em;
+  width: 20px;
+  height: 20px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -285,5 +283,114 @@ header {
     --stats: hsl(227, 100%, 98%);
 
     --btn-hover: hsl(212, 100%, 69%);
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  html,
+  body {
+    height: 100vh;
+  }
+
+  body {
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .flex {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .app {
+    width: 570px;
+    margin: auto;
+  }
+
+  .user {
+    padding: 40px;
+  }
+
+  .user__avatar {
+    width: 120px;
+    height: 120px;
+  }
+
+  .user__avatar img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .user__login {
+    font-size: 16px;
+  }
+
+  .user__name {
+    font-size: 26px;
+  }
+
+  .user__stats {
+    text-align: left;
+  }
+
+  .user__stats span {
+    font-size: 13px;
+  }
+
+  .user__stats strong {
+    text-align: left;
+    font-size: 22px;
+  }
+
+  .user__info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    column-gap: 0;
+    row-gap: 20px;
+  }
+
+  .user__item:not(:first-child) {
+    margin-top: 0;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .app {
+    width: 730px;
+    margin: auto;
+  }
+
+  .user {
+    padding: 3.2em;
+  }
+
+  .user__avatar + div {
+    position: relative;
+    flex: 1;
+    padding-left: 1em;
+  }
+
+  .user__login {
+    margin-top: 12px;
+  }
+
+  .user__text {
+    margin-top: 0;
+  }
+
+  .user__date {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .user__content {
+    margin-top: -1em;
+    margin-left: auto;
+    width: 480px;
   }
 }

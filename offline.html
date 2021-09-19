@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="GitHub user search app" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png" />
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <title>You are offline | GitHub user search app</title>
+</head>
+
+<body>
+    <main class="app">
+        <header class="app__header">
+            <strong class="logo">devfinder</strong>
+            <div class="theme" cursor>
+                <span>Light</span>
+            </div>
+        </header>
+
+        <form id="search" class="search bg" autocomplete="off">
+            <span id="error" class="error">No results</span>
+            <input type="text" name="search" id="search-input" placeholder="Search GitHub username..." />
+            <button id="search-button" cursor>Search</button>
+        </form>
+
+        <div id="user" class="user bg">
+            <div class="user__content">
+                <p class="user__text text">You are offline.</p>
+                <p class="text">Click the button below to try reloading.</p>
+                <button type="button">⤾ Reload</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Inline the page's JavaScript file. -->
+    <script>
+        // Manual reload feature.
+        document.querySelector("button").addEventListener("click", () => {
+            window.location.reload();
+        });
+
+        // Listen to changes in the network state, reload when online.
+        // This handles the case when the device is completely offline.
+        window.addEventListener("online", () => {
+            window.location.reload();
+        });
+
+        // Check if the server is responding and reload the page if it is.
+        // This handles the case when the device is online, but the server
+        // is offline or misbehaving.
+        async function checkNetworkAndReload() {
+            try {
+                const response = await fetch(".");
+                // Verify we get a valid response from the server
+                if (response.status >= 200 && response.status < 500) {
+                    window.location.reload();
+                    return;
+                }
+            } catch {
+                // Unable to connect to the server, ignore.
+            }
+            window.setTimeout(checkNetworkAndReload, 2500);
+        }
+
+        checkNetworkAndReload();
+    </script>
+</body>
+
+</html>
