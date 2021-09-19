@@ -71,21 +71,25 @@ async function getGithubUser(username) {
 
   error.style.display = "none";
 
-  try {
-    const response = await fetch(url);
-    let user = await response.json();
+  if (username !== "") {
+    try {
+      const response = await fetch(url);
+      let user = await response.json();
 
-    if (response.ok === false && response.status === 404) return;
+      if (response.ok === false && response.status === 404) return;
 
-    if (response.ok !== false) {
-      error.style.display = "none";
-      userContainer.innerHTML = renderTemplate(user);
-    } else {
-      error.style.display = "block";
+      if (response.ok !== false) {
+        error.style.display = "none";
+        userContainer.innerHTML = renderTemplate(user);
+      } else {
+        error.style.display = "block";
+      }
+    } catch (error) {
+      console.log("error", error);
     }
-  } catch (error) {
-    console.log("error", error);
   }
+
+  searchInput.value = "";
 }
 
 getGithubUser("octocat");
@@ -96,7 +100,6 @@ searchInput.addEventListener("change", () => {
   if (searchInput.value !== "") {
     searchButton.addEventListener("click", () => {
       getGithubUser(searchInput.value);
-      searchInput.value = "";
     });
   }
 });
