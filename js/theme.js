@@ -1,47 +1,35 @@
-const toggleButton = document.querySelector(".theme");
-const toggleSpan = document.querySelector(".theme span");
-const prefersColorScheme = window.matchMedia("(prefers-color-scheme: dark)");
-const localStorage = window.localStorage.getItem("theme");
-
-const userPrefersDark =
-  window.matchMedia &&
-  window.matchMedia("(prefers-color-scheme: dark)").matches;
-const userPrefersLight =
-  window.matchMedia &&
-  window.matchMedia("(prefers-color-scheme: light)").matches;
-
-const toggleTheme = (state, handlerEvent) => {
-  if (state) {
-    document.body.className = "dark";
-    toggleSpan.textContent = "Light";
-
-    if (handlerEvent) window.localStorage.setItem("theme", "dark");
-  } else {
-    document.body.className = "light";
-    toggleSpan.textContent = "Dark";
-
-    if (handlerEvent) window.localStorage.setItem("theme", "light");
-  }
+const toggleSelectors = {
+    toggleButton: document.querySelector(".theme"),
+    toggleSpan: document.querySelector(".theme span")
 };
-
-if (localStorage) {
-  toggleTheme(localStorage === "dark");
-} else {
-  toggleTheme(userPrefersDark);
+const prefersColorScheme = window.matchMedia("(prefers-color-scheme: dark)");
+const userLocalStorage = window.localStorage.getItem("theme");
+const userPrefersDark = window.matchMedia && prefersColorScheme.matches;
+const toggleTheme = (state, handlerEvent) => {
+    if (state) {
+        document.body.className = "dark";
+        toggleSelectors.toggleSpan.textContent = "Light";
+        if (handlerEvent)
+            window.localStorage.setItem("theme", "dark");
+    }
+    else {
+        document.body.className = "light";
+        toggleSelectors.toggleSpan.textContent = "Dark";
+        if (handlerEvent)
+            window.localStorage.setItem("theme", "light");
+    }
+};
+if (userLocalStorage) {
+    toggleTheme(userLocalStorage === "dark");
 }
-
-if (!localStorage) {
-  prefersColorScheme.addEventListener("change", (event) => {
-    toggleTheme(event.matches);
-  });
+else {
+    toggleTheme(userPrefersDark);
 }
-
-toggleButton.addEventListener("click", () => {
-  toggleTheme(document.body.className === "light", true);
-
-  /* if (document.body.className === "light") {
-    window.localStorage.setItem("theme", "dark");
-  } else {
-    window.localStorage.setItem("theme", "light");
-  } */
+if (!userLocalStorage) {
+    prefersColorScheme.addEventListener("change", (event) => {
+        toggleTheme(event.matches);
+    });
+}
+toggleSelectors.toggleButton.addEventListener("click", () => {
+    toggleTheme(document.body.className === "light", true);
 });

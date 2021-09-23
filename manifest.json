@@ -15,7 +15,7 @@
   ],
   "start_url": "/",
   "background_color": "#f5f7ff",
-  "display": "fullscreen",
+  "display": "standalone",
   "scope": "/",
   "theme_color": "#0077ff",
   "description": "Github Search : Find a specific user!"
