@@ -64,6 +64,7 @@ const getGithubUser = (username) => __awaiter(this, void 0, void 0, function* ()
                 userContainer.innerHTML = renderTemplate(user);
             }
             else {
+                error.textContent = "No results";
                 error.style.display = "block";
             }
         }
@@ -75,10 +76,14 @@ const getGithubUser = (username) => __awaiter(this, void 0, void 0, function* ()
 });
 getGithubUser("ccreusat");
 searchForm.onsubmit = (event) => event.preventDefault();
-searchInput.addEventListener("change", () => {
+searchButton.addEventListener("click", () => {
     if (searchInput.value !== "") {
-        searchButton.addEventListener("click", () => {
-            getGithubUser(searchInput.value);
-        });
+        error.style.display = "none";
+        getGithubUser(searchInput.value);
+    }
+    else {
+        console.log("else");
+        error.textContent = "You have to enter a username.";
+        error.style.display = "block";
     }
 });

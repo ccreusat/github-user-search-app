@@ -25,7 +25,7 @@
 
   --btn-hover: hsl(212, 100%, 69%);
 
-  --theme: url(../assets/images/icon-moon.svg) right center no-repeat;
+  --theme: url(../images/icon-moon.svg) right center no-repeat;
 }
 
 :root .dark {
@@ -42,7 +42,7 @@
 
   --btn-hover: hsl(212, 100%, 69%);
 
-  --theme: url(../assets/images/icon-sun.svg) right center no-repeat;
+  --theme: url(../images/icon-sun.svg) right center no-repeat;
 }
 
 body {

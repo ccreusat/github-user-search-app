@@ -1,6 +1,6 @@
 # Frontend Mentor - GitHub user search app solution
 
-This is a solution to the [GitHub user search app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/github-user-search-app-Q09YOgaH6). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+This is a solution to the [GitHub user search app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/github-user-search-app-Q09YOgaH6). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 ## Table of contents
 
@@ -32,7 +32,7 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![](https://ccreusat-github-user-search.vercel.app/assets/images/screenshot.jpg)
 
 ### Links
 
@@ -57,7 +57,7 @@ First step into PWA world! Learned to make a PWA with offline page, cached asset
 
 ### Useful resources
 
-- [PWA](https://web.dev/app-like-pwas/) - Useful article about PWA 
+- [PWA](https://web.dev/app-like-pwas/) - Useful article about PWA
 
 **Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
 

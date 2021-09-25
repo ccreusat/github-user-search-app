@@ -5,7 +5,7 @@ const searchInput = <HTMLInputElement>document.getElementById("search-input");
 const searchButton = document.getElementById("search-button");
 const error = document.getElementById("error");
 
-const renderTemplate = (user:any) => {
+const renderTemplate = (user: any) => {
   let date: any = new Date(user.created_at);
   date = date.toDateString();
   date = date.slice(3, 20);
@@ -64,7 +64,7 @@ const renderTemplate = (user:any) => {
         }</li>
       </ul>
   </div>`;
-}
+};
 
 const getGithubUser = async (username: string) => {
   let url = `${ENDPOINT}/${username}`;
@@ -80,6 +80,7 @@ const getGithubUser = async (username: string) => {
         error.style.display = "none";
         userContainer.innerHTML = renderTemplate(user);
       } else {
+        error.textContent = "No results";
         error.style.display = "block";
       }
     } catch (error) {
@@ -88,16 +89,18 @@ const getGithubUser = async (username: string) => {
   }
 
   searchInput.value = "";
-}
+};
 
 getGithubUser("ccreusat");
 
 searchForm.onsubmit = (event) => event.preventDefault();
 
-searchInput.addEventListener("change", () => {
+searchButton.addEventListener("click", () => {
   if (searchInput.value !== "") {
-    searchButton.addEventListener("click", () => {
-      getGithubUser(searchInput.value);
-    });
+    error.style.display = "none";
+    getGithubUser(searchInput.value);
+  } else {
+    error.textContent = "You have to enter a username.";
+    error.style.display = "block";
   }
 });
