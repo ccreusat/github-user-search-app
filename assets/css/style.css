@@ -122,11 +122,11 @@ header {
   background-color: var(--blue);
 }
 
-[cursor] {
+[data-cursor="true"] {
   cursor: pointer;
 }
 
-[disabled] {
+[data-disabled="true"] {
   cursor: not-allowed;
 }
 
