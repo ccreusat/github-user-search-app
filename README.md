@@ -15,8 +15,6 @@ This is a solution to the [GitHub user search app challenge on Frontend Mentor](
   - [Useful resources](#useful-resources)
 - [Author](#author)
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
-
 ## Overview
 
 ### The challenge
@@ -36,7 +34,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Solution URL](https://your-solution-url.com)
+- Solution URL: [Solution URL](https://www.frontendmentor.io/solutions/github-search-htmlcsstypescript-es6-modules-and-pwa-RLiMz2nIz)
 - Live Site URL: [Live URL](https://ccreusat-github-user-search.vercel.app/)
 
 ## My process
@@ -58,8 +56,6 @@ First step into PWA world! Learned to make a PWA with offline page, cached asset
 ### Useful resources
 
 - [PWA](https://web.dev/app-like-pwas/) - Useful article about PWA
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
 
 ## Author
 
