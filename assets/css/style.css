@@ -26,6 +26,7 @@
   --btn-hover: hsl(212, 100%, 69%);
 
   --theme: url(../images/icon-moon.svg) right center no-repeat;
+  --github-icon: url(../github-icon-192.png);
 }
 
 :root .dark {
@@ -43,6 +44,7 @@
   --btn-hover: hsl(212, 100%, 69%);
 
   --theme: url(../images/icon-sun.svg) right center no-repeat;
+  --github-icon: url(../github-icon-white.png);
 }
 
 body {
@@ -260,6 +262,36 @@ header {
   height: 20px;
 }
 
+
+.add-button {
+  cursor: pointer;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  bottom: 1rem;
+  right: 1rem;
+  width: 200px;
+  background: none;
+  color: var(--text);
+}
+
+.add-button::before {
+  content: "";
+  display: inline-block;
+  margin-right: 1rem;
+  width: 32px;
+  height: 32px;
+  background-image: var(--github-icon);
+  background-size: cover;
+}
+
+.add-button img {
+  display: block;
+  max-width: 32px;
+  margin-right: 1rem;
+  height: auto;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --logo: hsl(0, 0%, 100%);
@@ -295,6 +327,7 @@ header {
 }
 
 @media only screen and (min-width: 768px) {
+
   html,
   body {
     height: 100vh;
@@ -376,7 +409,7 @@ header {
     padding: 3.2em;
   }
 
-  .user__avatar + div {
+  .user__avatar+div {
     position: relative;
     flex: 1;
     padding-left: 1em;

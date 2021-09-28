@@ -3,9 +3,9 @@ const cacheName = "cachedAssets";
 // Precached files
 const assets = [
   "/offline.html",
-  "/css/style.css",
-  "/js/search.js",
-  "/js/theme.js",
+  "assets/css/style.css",
+  "assets/js/search.js",
+  "assets/js/theme.js",
   "https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap",
 ];
 // Customize this with a different URL if needed.
@@ -26,13 +26,13 @@ self.addEventListener("fetch", (event: any) => {
   //console.log("Fetch intercepted for:", event.request.url);
   event.respondWith(
     caches
-      .match(event.request)
-      .then((cachedResponse) => {
-        if (cachedResponse) {
-          return cachedResponse;
-        }
-        return fetch(event.request);
-      })
-      .catch(() => caches.match(offlinePage))
+    .match(event.request)
+    .then((cachedResponse) => {
+      if (cachedResponse) {
+        return cachedResponse;
+      }
+      return fetch(event.request);
+    })
+    .catch(() => caches.match(offlinePage))
   );
 });

@@ -1,9 +1,9 @@
 const cacheName = "cachedAssets";
 const assets = [
     "/offline.html",
-    "/css/style.css",
-    "/js/search.js",
-    "/js/theme.js",
+    "assets/css/style.css",
+    "assets/js/search.js",
+    "assets/js/theme.js",
     "https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap",
 ];
 const offlinePage = "./offline.html";

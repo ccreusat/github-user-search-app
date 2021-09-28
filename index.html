@@ -33,6 +33,7 @@
         </form>
 
         <div id="user" class="user bg"></div>
+        <button class="add-button">Add to home screen</button>
     </main>
 
     <script>
@@ -43,7 +44,7 @@
             window.addEventListener('load', async () => {
                 // Try to register the service worker.
                 try {
-                    const reg = navigator.serviceWorker.register('service-worker.js');;
+                    const reg = navigator.serviceWorker.register('/service-worker.js');;
                     console.log('Service worker registered! 😎');
                 } catch (err) {
                     console.log('😥 Service worker registration failed: ', err);
@@ -55,7 +56,7 @@
     <script type="module" src="main.js"></script>
 
     <script src="assets/js/search.js"></script>
-    <script src="assets/js/theme.js"></script>
+    <!-- <script src="assets/js/theme.js"></script> -->
 </body>
 
 </html>
