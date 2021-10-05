@@ -47,6 +47,9 @@ Users should be able to:
 - CSS Grid
 - Mobile-first workflow
 - TypeScript
+- ReactJS
+- ViteJS
+- PWA
 - @media (prefers-color-scheme: dark)
 
 ### What I learned
