@@ -3,12 +3,12 @@
   "name": "Github User Search App",
   "icons": [
     {
-      "src": "/assets/github-icon-192.png",
+      "src": "src/images/github-icon-192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/assets/github-icon-512.png",
+      "src": "src/images/github-icon-512.png",
       "type": "image/png",
       "sizes": "512x512"
     }

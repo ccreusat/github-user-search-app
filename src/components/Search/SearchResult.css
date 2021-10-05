@@ -1,0 +1,171 @@
+.user {
+    padding: 32px 24px;
+}
+
+.user__top {
+    display: flex;
+}
+
+.user__avatar {
+    margin-right: 20px;
+    width: 70px;
+    height: 70px;
+}
+
+.user__avatar img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+
+.user__date {
+    color: var(--grey);
+}
+
+.user__name {
+    display: block;
+    color: var(--username);
+    font-size: 16px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 60%;
+    overflow: hidden;
+    display: block;
+}
+
+.user__login {
+    display: block;
+    /* margin-top: 12px; */
+    color: var(--blue);
+}
+
+.user__text {
+    margin: 20px 0 32px;
+    color: var(--text);
+}
+
+.user__stats {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 32px 0;
+    padding: 17px 32px;
+    border-radius: 10px;
+    background-color: var(--stats);
+}
+
+.user__stats span {
+    display: block;
+    font-size: 11px;
+}
+
+.user__stats strong {
+    display: block;
+    text-align: center;
+    color: var(--username);
+    font-size: 16px;
+}
+
+.user__info {
+    flex-wrap: wrap;
+}
+
+.user__item {
+    display: flex;
+    align-items: center;
+}
+
+.user__item:not(:first-child) {
+    margin-top: 16px;
+}
+
+.image-container {
+    margin-right: 1em;
+    width: 20px;
+    height: 20px;
+}
+
+
+@media only screen and (min-width: 768px) {
+
+    .user {
+        padding: 40px;
+    }
+
+    .user__avatar {
+        width: 120px;
+        height: 120px;
+    }
+
+    .user__avatar img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .user__login {
+        font-size: 16px;
+    }
+
+    .user__name {
+        font-size: 26px;
+    }
+
+    .user__stats {
+        text-align: left;
+    }
+
+    .user__stats span {
+        font-size: 13px;
+    }
+
+    .user__stats strong {
+        text-align: left;
+        font-size: 22px;
+    }
+
+    .user__info {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        column-gap: 0;
+        row-gap: 20px;
+    }
+
+    .user__item:not(:first-child) {
+        margin-top: 0;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+
+    .user {
+        padding: 3.2em;
+    }
+
+    .user__avatar+div {
+        position: relative;
+        flex: 1;
+        padding-left: 1em;
+    }
+
+    .user__login {
+        margin-top: 12px;
+    }
+
+    .user__text {
+        margin-top: 0;
+    }
+
+    .user__date {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    .user__content {
+        margin-top: -1em;
+        margin-left: auto;
+        width: 480px;
+    }
+}

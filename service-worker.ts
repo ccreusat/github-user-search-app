@@ -2,10 +2,7 @@
 const cacheName = "cachedAssets";
 // Precached files
 const assets = [
-  "/offline.html",
-  "assets/css/style.css",
-  "assets/js/search.js",
-  "assets/js/theme.js",
+  "./offline.html",
   "https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap",
 ];
 // Customize this with a different URL if needed.

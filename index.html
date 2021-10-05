@@ -1,59 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="GitHub user search app" />
     <meta name="theme-color" content="#0077ff">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="src/images/favicon-32x32.png" />
     <link rel="manifest" href="manifest.json" crossorigin="use-credentials" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/css/style.css" />
 
     <title>Frontend Mentor | GitHub user search app</title>
-</head>
-
-<body>
-    <main class="app">
-
-        <header class="app__header">
-            <h1 class="logo">devfinder</h1>
-            <div class="theme" data-cursor="true">
-                <span>Light</span>
-            </div>
-        </header>
-
-        <form id="search" class="search bg" autocomplete="off">
-            <span id="error" class="error"></span>
-            <input type="text" name="search" id="search-input" placeholder="Search GitHub username..." />
-            <button id="search-button" class="button" type="submit" data-cursor="true">Search</button>
-        </form>
-
-        <div id="user" class="user bg"></div>
-        <button class="add-button" type="button">Add to home screen</button>
-    </main>
-
+  </head>
+  <body>
+    <div id="root"></div>
     <script>
-        // Check that service workers are supported
-        // Register the service worker
-        if ('serviceWorker' in navigator) {
-            // Wait for the 'load' event to not block other work
-            window.addEventListener('load', async () => {
-                // Try to register the service worker.
-                try {
-                    const reg = navigator.serviceWorker.register('/service-worker.js');;
-                    console.log('Service worker registered! 😎');
-                } catch (err) {
-                    console.log('😥 Service worker registration failed: ', err);
-                }
-            });
-        }
+      // Check that service workers are supported
+      // Register the service worker
+      if ('serviceWorker' in navigator) {
+        // Wait for the 'load' event to not block other work
+        window.addEventListener('load', async () => {
+            // Try to register the service worker.
+            try {
+                const reg = navigator.serviceWorker.register('./service-worker.ts');;
+                console.log('Service worker registered! 😎');
+            } catch (err) {
+                console.log('😥 Service worker registration failed: ', err);
+            }
+        });
+      }
     </script>
-
-    <script type="module" src="main.js"></script>
-</body>
-
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>

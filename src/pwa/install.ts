@@ -1,6 +1,6 @@
 export const InstallPWA = () => {
   let deferredPrompt: any;
-  const addBtn = < HTMLButtonElement > document.querySelector('.add-button');
+  const addBtn = <HTMLButtonElement>document.querySelector('.add-button');
   addBtn.style.display = 'none';
 
   window.addEventListener('beforeinstallprompt', (event: Event) => {

@@ -1,0 +1,28 @@
+.addButton {
+    cursor: pointer;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    bottom: 1rem;
+    right: 1rem;
+    width: 200px;
+    background: none;
+    color: var(--text);
+}
+
+.addButton::before {
+    content: "";
+    display: inline-block;
+    margin-right: 1rem;
+    width: 32px;
+    height: 32px;
+    background-image: var(--github-icon);
+    background-size: cover;
+}
+
+.addButton img {
+    display: block;
+    max-width: 32px;
+    margin-right: 1rem;
+    height: auto;
+}

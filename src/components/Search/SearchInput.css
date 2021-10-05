@@ -1,0 +1,48 @@
+input {
+    border: 0;
+    width: 100%;
+    font-family: var(--ff-family);
+}
+
+input:focus {
+    outline: none;
+}
+
+button {
+    font-family: var(--ff-family);
+    border: 0;
+    border-radius: 10px;
+}
+
+.error {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 8em;
+    color: var(--error);
+    text-align: right;
+}
+
+.search {
+    position: relative;
+    overflow: hidden;
+    margin: 36px 0 24px;
+}
+
+.search input {
+    padding: 20px;
+    letter-spacing: -0.04em;
+    color: var(--username);
+    background-color: var(--bg);
+}
+
+.search button {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+}
+
+.search button:hover {
+    background-color: var(--btn-hover);
+}
